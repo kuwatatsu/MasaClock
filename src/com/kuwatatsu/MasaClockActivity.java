@@ -11,8 +11,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.TextToSpeech.OnInitListener;
-import android.util.Log;
-import android.widget.DigitalClock;
 import android.widget.TextView;
 
 public class MasaClockActivity extends Activity implements Runnable, OnInitListener {
@@ -55,7 +53,7 @@ public class MasaClockActivity extends Activity implements Runnable, OnInitListe
     	currentTime = currentTime / 60;
     	int h = (int)currentTime % 24;
     	
-		currentTimeString = "" + h + ":" + m + ":" + s;
+		currentTimeString = String.format("%02d:%02d:%02d", h, m, s);
 
 		handler.post(new Runnable() {
 			@Override

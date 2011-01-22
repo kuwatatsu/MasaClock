@@ -1,6 +1,7 @@
 package com.kuwatatsu;
 
 import java.util.Locale;
+import java.util.TimeZone;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -13,6 +14,7 @@ import android.speech.tts.TextToSpeech;
 import android.speech.tts.TextToSpeech.OnInitListener;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 public class MasaClockActivity extends Activity implements Runnable, OnInitListener {
@@ -23,6 +25,7 @@ public class MasaClockActivity extends Activity implements Runnable, OnInitListe
 	private Handler handler = null; 
 	private TextToSpeech textToSpeech = null;
 	private String currentTimeString = null;
+	private TimeZone timeZone = null;
 	
 	private boolean soundOn = true;
 	private boolean ttsOn = true;
@@ -37,6 +40,7 @@ public class MasaClockActivity extends Activity implements Runnable, OnInitListe
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.main);
 
         textView = (TextView)findViewById(R.id.TextView01);
@@ -45,6 +49,7 @@ public class MasaClockActivity extends Activity implements Runnable, OnInitListe
     	textToSpeech = new TextToSpeech(this, this);
     	mediaPlayer1 = MediaPlayer.create(this, R.raw.s1);
     	mediaPlayer2 = MediaPlayer.create(this, R.raw.s2);
+    	timeZone = TimeZone.getDefault();
     }
 
     @Override
@@ -56,7 +61,7 @@ public class MasaClockActivity extends Activity implements Runnable, OnInitListe
     
     @Override
 	public void run() {
-    	long currentTimeMillis = System.currentTimeMillis();
+    	long currentTimeMillis = System.currentTimeMillis() + timeZone.getRawOffset();
     	long currentTime = ((int)(currentTimeMillis / 1000));
     	int s = (int)currentTime % 60;
     	currentTime = currentTime / 60;
@@ -240,6 +245,7 @@ public class MasaClockActivity extends Activity implements Runnable, OnInitListe
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case MENU_EXIT_ID:
+			getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 			finish();
 			return true;
 		case MENU_SOUND_OFF_ID:

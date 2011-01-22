@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.TextToSpeech.OnInitListener;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 public class MasaClockActivity extends Activity implements Runnable, OnInitListener {
@@ -21,6 +23,15 @@ public class MasaClockActivity extends Activity implements Runnable, OnInitListe
 	private Handler handler = null; 
 	private TextToSpeech textToSpeech = null;
 	private String currentTimeString = null;
+	
+	private boolean soundOn = true;
+	private boolean ttsOn = true;
+	
+	private static final int MENU_EXIT_ID = Menu.FIRST;
+	private static final int MENU_SOUND_OFF_ID = Menu.FIRST + 1;
+	private static final int MENU_TTS_OFF_ID = Menu.FIRST + 2;
+	private static final int MENU_SOUND_ON_ID = Menu.FIRST + 3;
+	private static final int MENU_TTS_ON_ID = Menu.FIRST + 4;
 	
     /** Called when the activity is first created. */
     @Override
@@ -63,9 +74,13 @@ public class MasaClockActivity extends Activity implements Runnable, OnInitListe
 		});
 		switch (s) {
 		case 0:
-			textToSpeech.speak(currentTimeString, TextToSpeech.QUEUE_FLUSH, null);
-			mediaPlayer2.seekTo(0);
-			mediaPlayer2.start();
+			if (ttsOn) {
+				textToSpeech.speak(currentTimeString, TextToSpeech.QUEUE_FLUSH, null);
+			}
+			if (soundOn) {
+				mediaPlayer2.seekTo(0);
+				mediaPlayer2.start();
+			}
 			break;
 		case 1:
 		case 2:
@@ -77,13 +92,19 @@ public class MasaClockActivity extends Activity implements Runnable, OnInitListe
 		case 7:
 		case 8:
 		case 9:
-			mediaPlayer1.seekTo(0);
-			mediaPlayer1.start();
+			if (soundOn) {
+				mediaPlayer1.seekTo(0);
+				mediaPlayer1.start();
+			}
 			break;
 		case 10:
-			textToSpeech.speak(currentTimeString, TextToSpeech.QUEUE_FLUSH, null);
-			mediaPlayer2.seekTo(0);
-			mediaPlayer2.start();
+			if (ttsOn) {
+				textToSpeech.speak(currentTimeString, TextToSpeech.QUEUE_FLUSH, null);
+			}
+			if (soundOn) {
+				mediaPlayer2.seekTo(0);
+				mediaPlayer2.start();
+			}
 			break;
 		case 11:
 		case 12:
@@ -95,13 +116,19 @@ public class MasaClockActivity extends Activity implements Runnable, OnInitListe
 		case 17:
 		case 18:
 		case 19:
-			mediaPlayer1.seekTo(0);
-			mediaPlayer1.start();
+			if (soundOn) {
+				mediaPlayer1.seekTo(0);
+				mediaPlayer1.start();
+			}
 			break;
 		case 20:
-			textToSpeech.speak(currentTimeString, TextToSpeech.QUEUE_FLUSH, null);
-			mediaPlayer2.seekTo(0);
-			mediaPlayer2.start();
+			if (ttsOn) {
+				textToSpeech.speak(currentTimeString, TextToSpeech.QUEUE_FLUSH, null);
+			}
+			if (soundOn) {
+				mediaPlayer2.seekTo(0);
+				mediaPlayer2.start();
+			}
 			break;
 		case 21:
 		case 22:
@@ -113,13 +140,19 @@ public class MasaClockActivity extends Activity implements Runnable, OnInitListe
 		case 27:
 		case 28:
 		case 29:
-			mediaPlayer1.seekTo(0);
-			mediaPlayer1.start();
+			if (soundOn) {
+				mediaPlayer1.seekTo(0);
+				mediaPlayer1.start();
+			}
 			break;
 		case 30:
-			textToSpeech.speak(currentTimeString, TextToSpeech.QUEUE_FLUSH, null);
-			mediaPlayer2.seekTo(0);
-			mediaPlayer2.start();
+			if (ttsOn) {
+				textToSpeech.speak(currentTimeString, TextToSpeech.QUEUE_FLUSH, null);
+			}
+			if (soundOn) {
+				mediaPlayer2.seekTo(0);
+				mediaPlayer2.start();
+			}
 			break;
 		case 31:
 		case 32:
@@ -131,13 +164,19 @@ public class MasaClockActivity extends Activity implements Runnable, OnInitListe
 		case 37:
 		case 38:
 		case 39:
-			mediaPlayer1.seekTo(0);
-			mediaPlayer1.start();
+			if (soundOn) {
+				mediaPlayer1.seekTo(0);
+				mediaPlayer1.start();
+			}
 			break;
 		case 40:
-			textToSpeech.speak(currentTimeString, TextToSpeech.QUEUE_FLUSH, null);
-			mediaPlayer2.seekTo(0);
-			mediaPlayer2.start();
+			if (ttsOn) {
+				textToSpeech.speak(currentTimeString, TextToSpeech.QUEUE_FLUSH, null);
+			}
+			if (soundOn) {
+				mediaPlayer2.seekTo(0);
+				mediaPlayer2.start();
+			}
 			break;
 		case 41:
 		case 42:
@@ -149,13 +188,19 @@ public class MasaClockActivity extends Activity implements Runnable, OnInitListe
 		case 47:
 		case 48:
 		case 49:
-			mediaPlayer1.seekTo(0);
-			mediaPlayer1.start();
+			if (soundOn) {
+				mediaPlayer1.seekTo(0);
+				mediaPlayer1.start();
+			}
 			break;
 		case 50:
-			textToSpeech.speak(currentTimeString, TextToSpeech.QUEUE_FLUSH, null);
-			mediaPlayer2.seekTo(0);
-			mediaPlayer2.start();
+			if (ttsOn) {
+				textToSpeech.speak(currentTimeString, TextToSpeech.QUEUE_FLUSH, null);
+			}
+			if (soundOn) {
+				mediaPlayer2.seekTo(0);
+				mediaPlayer2.start();
+			}
 			break;
 		case 51:
 		case 52:
@@ -167,8 +212,10 @@ public class MasaClockActivity extends Activity implements Runnable, OnInitListe
 		case 57:
 		case 58:
 		case 59:
-			mediaPlayer1.seekTo(0);
-			mediaPlayer1.start();
+			if (soundOn) {
+				mediaPlayer1.seekTo(0);
+				mediaPlayer1.start();
+			}
 			break;
 		default:
 			break;
@@ -187,5 +234,46 @@ public class MasaClockActivity extends Activity implements Runnable, OnInitListe
 		if (textToSpeech.isLanguageAvailable(loc) >= TextToSpeech.LANG_AVAILABLE) {
 			textToSpeech.setLanguage(loc);
 		}
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case MENU_EXIT_ID:
+			finish();
+			return true;
+		case MENU_SOUND_OFF_ID:
+			soundOn = false;
+			return true;
+		case MENU_TTS_OFF_ID:
+			ttsOn = false;
+			return true;
+		case MENU_SOUND_ON_ID:
+			soundOn = true;
+			return true;
+		case MENU_TTS_ON_ID:
+			ttsOn = true;
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+	
+	@Override
+	public boolean onPrepareOptionsMenu(Menu menu) {
+		boolean result = super.onPrepareOptionsMenu(menu);
+		menu.clear();
+		menu.add(0, MENU_EXIT_ID, Menu.NONE, R.string.menu1);
+		if (soundOn) {
+			menu.add(0, MENU_SOUND_OFF_ID, Menu.NONE, R.string.menu2);
+		} else {
+			menu.add(0, MENU_SOUND_ON_ID, Menu.NONE, R.string.menu4);
+		}
+		if (ttsOn) {
+			menu.add(0, MENU_TTS_OFF_ID, Menu.NONE, R.string.menu3);
+		} else {
+			menu.add(0, MENU_TTS_ON_ID, Menu.NONE, R.string.menu5);
+		}
+		return result;
+
 	}
 }

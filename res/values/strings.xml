@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MasaClock</string>
+    <string name="menu1">Exit</string>
+    <string name="menu2">Sound off</string>
+    <string name="menu3">TTS off</string>
+    <string name="menu4">Sound on</string>
+    <string name="menu5">TTS on</string>
 </resources>

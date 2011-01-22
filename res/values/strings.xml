@@ -2,4 +2,5 @@
 <resources>
     <string name="hello">Hello World, MasaClockActivity!</string>
     <string name="app_name">MasaClock</string>
+    <string name="hhmmss">HH:MM:SS</string>
 </resources>

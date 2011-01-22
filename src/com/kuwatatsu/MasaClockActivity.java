@@ -246,6 +246,10 @@ public class MasaClockActivity extends Activity implements Runnable, OnInitListe
 		switch (item.getItemId()) {
 		case MENU_EXIT_ID:
 			getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+			mediaPlayer1.stop();
+			mediaPlayer1.release();
+			mediaPlayer2.stop();
+			mediaPlayer2.release();
 			finish();
 			return true;
 		case MENU_SOUND_OFF_ID:

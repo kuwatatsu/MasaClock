@@ -6,4 +6,5 @@
     <string name="menu3">TTS off</string>
     <string name="menu4">Sound on</string>
     <string name="menu5">TTS on</string>
+    <string name="menu6">Set</string>
 </resources>
